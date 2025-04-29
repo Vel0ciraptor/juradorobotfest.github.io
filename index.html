@@ -2,17 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Puntuación Vehículos Seguidores de Línea</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-hover: #2980b9;
+            --warning-color: #f39c12;
+            --warning-hover: #e67e22;
+            --danger-color: #e74c3c;
+            --danger-hover: #c0392b;
+            --success-color: #2ecc71;
+            --success-hover: #27ae60;
+            --bg-color: #0f1c3f;
+            --container-bg: rgba(25, 34, 66, 0.85);
+            --section-bg: rgba(32, 43, 81, 0.7);
+            --text-color: #f5f5f5;
+            --highlight-color: #7caeff;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #0f1c3f;
-            color: #f5f5f5;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
             position: relative;
+            font-size: 1rem;
+            line-height: 1.5;
         }
         
         /* Estilo para el fondo estrellado */
@@ -40,8 +62,9 @@
         
         .container {
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
-            background-color: rgba(25, 34, 66, 0.85);
+            background-color: var(--container-bg);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(87, 181, 255, 0.3);
@@ -50,17 +73,28 @@
         
         h1 {
             text-align: center;
-            color: #7caeff;
+            color: var(--highlight-color);
             text-shadow: 0 0 8px rgba(124, 174, 255, 0.5);
-            margin-bottom: 25px;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 0;
         }
         
         .section {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 1.25rem;
+            padding: 1rem;
             border: 1px solid #344178;
             border-radius: 5px;
-            background-color: rgba(32, 43, 81, 0.7);
+            background-color: var(--section-bg);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
@@ -71,33 +105,39 @@
         }
         
         .timer-display {
-            font-size: 24px;
+            font-size: 1.5rem;
             text-align: center;
-            margin: 10px 0;
+            margin: 0.625rem 0;
             font-weight: bold;
-            color: #7caeff;
+            color: var(--highlight-color);
         }
         
         .controls {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            margin-bottom: 15px;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         .penalties {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
-            margin-bottom: 15px;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         button {
-            padding: 8px 16px;
+            padding: 0.5rem 1rem;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 0.875rem;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            flex: 1 1 auto;
+            min-width: 100px;
         }
         
         button:hover {
@@ -117,46 +157,46 @@
         }
         
         .btn-primary {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
         }
         
         .btn-primary:hover {
-            background-color: #2980b9;
+            background-color: var(--primary-hover);
         }
         
         .btn-warning {
-            background-color: #f39c12;
+            background-color: var(--warning-color);
             color: white;
         }
         
         .btn-warning:hover {
-            background-color: #e67e22;
+            background-color: var(--warning-hover);
         }
         
         .btn-danger {
-            background-color: #e74c3c;
+            background-color: var(--danger-color);
             color: white;
         }
         
         .btn-danger:hover {
-            background-color: #c0392b;
+            background-color: var(--danger-hover);
         }
         
         .btn-success {
-            background-color: #2ecc71;
+            background-color: var(--success-color);
             color: white;
         }
         
         .btn-success:hover {
-            background-color: #27ae60;
+            background-color: var(--success-hover);
         }
         
         .score {
-            font-size: 22px;
+            font-size: 1.4rem;
             text-align: center;
-            margin: 20px 0;
-            padding: 15px;
+            margin: 1.25rem 0;
+            padding: 1rem;
             border-radius: 8px;
             background-color: rgba(44, 62, 80, 0.7);
             color: white;
@@ -172,8 +212,10 @@
         
         .section-title {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            gap: 0.5rem;
         }
         
         .section-indicator {
@@ -181,36 +223,37 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 0.625rem;
             background-color: #344178;
             transition: all 0.3s ease;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
         }
         
         .section-active {
-            background-color: #27ae60;
-            box-shadow: 0 0 10px #2ecc71;
+            background-color: var(--success-color);
+            box-shadow: 0 0 10px var(--success-color);
         }
         
         .section-completed {
-            background-color: #3498db;
-            box-shadow: 0 0 10px #3498db;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
         }
         
         .history {
-            margin-top: 20px;
+            margin-top: 1.25rem;
             max-height: 200px;
             overflow-y: auto;
-            padding: 10px;
+            padding: 0.625rem;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(27, 38, 72, 0.7);
         }
         
         .history-item {
-            padding: 8px;
+            padding: 0.5rem;
             border-bottom: 1px solid #344178;
             color: #ddd;
+            font-size: 0.875rem;
         }
         
         .history-item:last-child {
@@ -219,19 +262,23 @@
         
         .section-time {
             font-weight: bold;
-            margin-right: 10px;
-            color: #7caeff;
+            margin-right: 0.625rem;
+            color: var(--highlight-color);
         }
         
         .reset-container {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.625rem;
         }
         
         /* Estilos para el selector de ID y emoticones */
         .vehicle-id-section {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 1.25rem;
+            padding: 1rem;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(25, 46, 120, 0.7);
@@ -240,16 +287,16 @@
         
         .emoticon-selector {
             display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 0.625rem;
+            margin-top: 0.625rem;
         }
         
         .emoticon-option {
-            font-size: 24px;
+            font-size: 1.5rem;
             cursor: pointer;
             text-align: center;
-            padding: 8px;
+            padding: 0.5rem;
             border-radius: 8px;
             transition: all 0.3s ease;
             background-color: rgba(22, 36, 82, 0.7);
@@ -267,22 +314,25 @@
         
         .vehicle-details {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 1rem;
+            padding: 0.625rem;
             background-color: rgba(22, 36, 82, 0.7);
             border-radius: 8px;
+            gap: 1rem;
         }
         
         .vehicle-emoji {
-            font-size: 36px;
-            margin-right: 15px;
+            font-size: 2.25rem;
+            margin-right: 1rem;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            flex-shrink: 0;
         }
         
         .track-visualization {
-            margin: 20px 0;
-            padding: 15px;
+            margin: 1.25rem 0;
+            padding: 1rem;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(22, 36, 82, 0.7);
@@ -290,7 +340,7 @@
         
         .track {
             position: relative;
-            height: 180px;
+            height: 120px;
             background-color: #1a1a2e;
             border-radius: 40px;
             overflow: hidden;
@@ -345,11 +395,12 @@
         
         .section-label {
             position: absolute;
-            bottom: 10px;
+            bottom: 0.625rem;
             color: white;
             font-weight: bold;
             z-index: 2;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            font-size: 0.875rem;
         }
         
         .section-1-label {
@@ -366,7 +417,7 @@
         
         .track-vehicle {
             position: absolute;
-            font-size: 28px;
+            font-size: 1.75rem;
             z-index: 3;
             top: 50%;
             transform: translateY(-50%);
@@ -375,12 +426,12 @@
         }
         
         .id-input {
-            padding: 10px;
+            padding: 0.625rem;
             border: 1px solid #344178;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 1rem;
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem;
             background-color: rgba(22, 36, 82, 0.7);
             color: white;
         }
@@ -391,8 +442,8 @@
         
         /* Estilos para la tabla de resultados */
         .results-section {
-            margin-top: 30px;
-            padding: 15px;
+            margin-top: 1.875rem;
+            padding: 1rem;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(25, 46, 120, 0.7);
@@ -401,19 +452,20 @@
         .results-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 1rem;
             border-radius: 5px;
             overflow: hidden;
+            font-size: 0.875rem;
         }
         
         .results-table th, .results-table td {
             border: 1px solid #344178;
-            padding: 12px 8px;
+            padding: 0.75rem 0.5rem;
             text-align: center;
         }
         
         .results-table th {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
@@ -432,21 +484,21 @@
         
         .empty-table-message {
             text-align: center;
-            padding: 20px;
+            padding: 1.25rem;
             color: #8f9bbc;
             font-style: italic;
         }
         
         .export-btn {
             display: block;
-            margin: 20px auto;
-            padding: 12px 24px;
+            margin: 1.25rem auto;
+            padding: 0.75rem 1.5rem;
             background-color: #2c3e50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
@@ -470,7 +522,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 15px 25px;
+            padding: 0.9375rem 1.5625rem;
             background-color: rgba(46, 204, 113, 0.9);
             color: white;
             border-radius: 5px;
@@ -479,6 +531,9 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
+            font-size: 0.875rem;
+            max-width: 90%;
+            text-align: center;
         }
         
         .alert.show {
@@ -502,6 +557,167 @@
         
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(87, 119, 201, 0.9);
+        }
+        
+        .section-indicators {
+            display: flex;
+            justify-content: center;
+            margin: 1.25rem 0;
+            gap: 1rem;
+        }
+        
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 0.9375rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.25rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            .timer-display {
+                font-size: 1.25rem;
+            }
+            
+            .score {
+                font-size: 1.25rem;
+                padding: 0.75rem;
+            }
+            
+            button {
+                padding: 0.5rem;
+                font-size: 0.8125rem;
+                min-width: 80px;
+            }
+            
+            .track {
+                height: 100px;
+            }
+            
+            .track-vehicle {
+                font-size: 1.5rem;
+            }
+            
+            .section-label {
+                font-size: 0.75rem;
+            }
+            
+            .vehicle-emoji {
+                font-size: 1.75rem;
+            }
+            
+            .emoticon-option {
+                font-size: 1.25rem;
+                padding: 0.25rem;
+            }
+            
+            .results-table {
+                font-size: 0.75rem;
+            }
+            
+            .results-table th, 
+            .results-table td {
+                padding: 0.5rem 0.25rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+                font-size: 0.875rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.15rem;
+            }
+            
+            .timer-display {
+                font-size: 1.1rem;
+            }
+            
+            .score {
+                font-size: 1.1rem;
+                padding: 0.5rem;
+            }
+            
+            button {
+                padding: 0.4rem;
+                font-size: 0.75rem;
+                min-width: 70px;
+            }
+            
+            .controls, .penalties {
+                flex-direction: column;
+            }
+            
+            .track {
+                height: 80px;
+                border-radius: 20px;
+            }
+            
+            .track-vehicle {
+                font-size: 1.25rem;
+            }
+            
+            .section-label {
+                font-size: 0.65rem;
+                bottom: 5px;
+            }
+            
+            .vehicle-emoji {
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+            }
+            
+            .emoticon-selector {
+                grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+                gap: 5px;
+            }
+            
+            .emoticon-option {
+                font-size: 1rem;
+                padding: 0.2rem;
+            }
+            
+            .vehicle-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .vehicle-details button {
+                margin-top: 0.5rem;
+                margin-left: 0 !important;
+                width: 100%;
+            }
+            
+            .results-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
@@ -569,7 +785,7 @@
             Puntuación Total: <span id="totalScore">100</span>
         </div>
         
-        <div class="section-indicators" style="display: flex; justify-content: center; margin: 20px 0;">
+        <div class="section-indicators">
             <div class="section-indicator" id="indicator-1"></div>
             <div class="section-indicator" id="indicator-2"></div>
             <div class="section-indicator" id="indicator-3"></div>
@@ -660,7 +876,7 @@
         
         <div class="reset-container">
             <button class="btn-danger" id="resetAll">Reiniciar Todo</button>
-            <button class="btn-warning" id="saveCurrentVehicle" style="margin-left: 10px;">Guardar Resultados y Nuevo Vehículo</button>
+            <button class="btn-warning" id="saveCurrentVehicle">Guardar Resultados y Nuevo Vehículo</button>
         </div>
     </div>
 
@@ -718,7 +934,7 @@
 
         // Inicializar el fondo estrellado
         function createStars() {
-            const starsCount = 150;
+            const starsCount = window.innerWidth < 768 ? 80 : 150;
             
             for (let i = 0; i < starsCount; i++) {
                 const star = document.createElement('div');
@@ -772,7 +988,7 @@
                     domElements.indicators[index].className = 'section-indicator section-completed';
                     domElements.sections[index].trackSection.classList.add('completed');
                     domElements.sections[index].trackSection.classList.remove('active');
-                } else {
+                                    } else {
                     domElements.indicators[index].className = 'section-indicator';
                     domElements.sections[index].trackSection.classList.remove('active', 'completed');
                 }
@@ -780,466 +996,466 @@
         }
 
         // Actualizar puntuación total
-       
-function updateScore() {
-    domElements.totalScore.textContent = appState.totalScore;
-}
-
-// Agregar evento al historial
-function addToHistory(message) {
-    const historyItem = document.createElement('div');
-    historyItem.className = 'history-item';
-    historyItem.textContent = message;
-    domElements.historyList.prepend(historyItem);
-}
-
-// Iniciar una sección
-function startSection(sectionIndex) {
-    const section = appState.sections[sectionIndex];
-    
-    if (!section.active && !section.completed) {
-        section.active = true;
-        appState.currentSection = sectionIndex + 1;
-        
-        const startTime = Date.now() - section.time;
-        section.timer = setInterval(() => {
-            section.time = Date.now() - startTime;
-            domElements.sections[sectionIndex].timer.textContent = formatTime(section.time);
-        }, 10);
-        
-        // Actualizar UI
-        domElements.sections[sectionIndex].start.disabled = true;
-        domElements.sections[sectionIndex].pause.disabled = false;
-        domElements.sections[sectionIndex].complete.disabled = false;
-        domElements.sections[sectionIndex].linePenalty.disabled = false;
-        domElements.sections[sectionIndex].framePenalty.disabled = false;
-        domElements.sections[sectionIndex].status.textContent = 'En progreso';
-        
-        updateSectionIndicators();
-        addToHistory(`Sección ${section.id} iniciada`);
-        updateVehiclePosition();
-    }
-}
-
-// Pausar una sección
-function pauseSection(sectionIndex) {
-    const section = appState.sections[sectionIndex];
-    
-    if (section.active && section.timer) {
-        clearInterval(section.timer);
-        section.timer = null;
-        
-        // Actualizar UI
-        domElements.sections[sectionIndex].start.disabled = false;
-        domElements.sections[sectionIndex].start.textContent = 'Continuar';
-        domElements.sections[sectionIndex].pause.disabled = true;
-        domElements.sections[sectionIndex].status.textContent = 'Pausado';
-        
-        addToHistory(`Sección ${section.id} pausada - Tiempo: ${formatTime(section.time)}`);
-    }
-}
-
-// Completar una sección
-function completeSection(sectionIndex) {
-    const section = appState.sections[sectionIndex];
-    
-    if (section.active) {
-        if (section.timer) {
-            clearInterval(section.timer);
-            section.timer = null;
+        function updateScore() {
+            domElements.totalScore.textContent = appState.totalScore;
         }
-        
-        section.active = false;
-        section.completed = true;
-        
-        // Actualizar UI
-        domElements.sections[sectionIndex].start.disabled = true;
-        domElements.sections[sectionIndex].pause.disabled = true;
-        domElements.sections[sectionIndex].complete.disabled = true;
-        domElements.sections[sectionIndex].linePenalty.disabled = true;
-        domElements.sections[sectionIndex].framePenalty.disabled = true;
-        domElements.sections[sectionIndex].status.textContent = 'Completado';
-        
-        // Habilitar la siguiente sección si existe
-        if (sectionIndex < 2) {
-            domElements.sections[sectionIndex + 1].start.disabled = false;
-        } else {
-            // Si es la última sección, mostrar mensaje de finalización
-            showAlert('¡Recorrido completado! Puede guardar los resultados.');
-            domElements.saveCurrentVehicle.disabled = false;
+
+        // Agregar evento al historial
+        function addToHistory(message) {
+            const historyItem = document.createElement('div');
+            historyItem.className = 'history-item';
+            historyItem.textContent = message;
+            domElements.historyList.prepend(historyItem);
         }
-        
-        updateSectionIndicators();
-        addToHistory(`Sección ${section.id} completada - Tiempo final: ${formatTime(section.time)}`);
-        
-        // Si completa la última sección, mover el vehículo a la meta
-        if (sectionIndex === 2) {
-            domElements.trackVehicle.style.left = '95%';
-            addToHistory(`¡${appState.vehicleEmoji} ${appState.vehicleId} ha completado el recorrido!`);
-        } else {
-            updateVehiclePosition();
+
+        // Iniciar una sección
+        function startSection(sectionIndex) {
+            const section = appState.sections[sectionIndex];
+            
+            if (!section.active && !section.completed) {
+                section.active = true;
+                appState.currentSection = sectionIndex + 1;
+                
+                const startTime = Date.now() - section.time;
+                section.timer = setInterval(() => {
+                    section.time = Date.now() - startTime;
+                    domElements.sections[sectionIndex].timer.textContent = formatTime(section.time);
+                }, 10);
+                
+                // Actualizar UI
+                domElements.sections[sectionIndex].start.disabled = true;
+                domElements.sections[sectionIndex].pause.disabled = false;
+                domElements.sections[sectionIndex].complete.disabled = false;
+                domElements.sections[sectionIndex].linePenalty.disabled = false;
+                domElements.sections[sectionIndex].framePenalty.disabled = false;
+                domElements.sections[sectionIndex].status.textContent = 'En progreso';
+                
+                updateSectionIndicators();
+                addToHistory(`Sección ${section.id} iniciada`);
+                updateVehiclePosition();
+            }
         }
-    }
-}
 
-// Aplicar penalización
-function applyPenalty(sectionIndex, type) {
-    const section = appState.sections[sectionIndex];
-    let penaltyPoints = 0;
-    let penaltyName = '';
-    
-    if (type === 'line') {
-        penaltyPoints = 5;
-        penaltyName = 'Fuera de Línea';
-    } else if (type === 'frame') {
-        penaltyPoints = 20;
-        penaltyName = 'Fuera del Marco';
-    }
-    
-    if (section.active) {
-        appState.totalScore -= penaltyPoints;
-        updateScore();
-        
-        section.penalties.push({
-            type: penaltyName,
-            points: penaltyPoints,
-            time: section.time
-        });
-        
-        addToHistory(`Penalización en Sección ${section.id}: ${penaltyName} (-${penaltyPoints} puntos) - Tiempo: ${formatTime(section.time)}`);
-    }
-}
-
-// Guardar resultados del vehículo actual
-function saveVehicleResults() {
-    // Verificar que todas las secciones están completadas
-    const allSectionsCompleted = appState.sections.every(section => section.completed);
-    
-    // Verificar que el vehículo tiene ID
-    if (appState.vehicleId === "Sin identificar") {
-        showAlert('Por favor, identifique el vehículo antes de guardar resultados');
-        return;
-    }
-    
-    // Si no se han completado todas las secciones, confirmar con el usuario
-    if (!allSectionsCompleted) {
-        const confirm = window.confirm('No se han completado todas las secciones. ¿Desea guardar los resultados parciales?');
-        if (!confirm) return;
-    }
-    
-    // Calcular tiempo total
-    const totalTime = appState.sections.reduce((sum, section) => sum + section.time, 0);
-    
-    // Crear objeto de resultado
-    const result = {
-        emoji: appState.vehicleEmoji,
-        id: appState.vehicleId,
-        score: appState.totalScore,
-        sectionTimes: appState.sections.map(section => section.time),
-        totalTime: totalTime,
-        penalties: appState.sections.flatMap(section => 
-            section.penalties.map(penalty => ({
-                section: section.id,
-                ...penalty
-            }))
-        ),
-        timestamp: new Date().toISOString()
-    };
-    
-    // Agregar a resultados
-    appState.results.push(result);
-    
-    // Actualizar tabla de resultados
-    updateResultsTable();
-    
-    // Habilitar exportación si hay resultados
-    if (appState.results.length > 0) {
-        domElements.exportResults.disabled = false;
-    }
-    
-    // Guardar en localStorage (opcional)
-    saveResultsToLocalStorage();
-    
-    // Mostrar mensaje de confirmación
-    showAlert('Resultados guardados correctamente');
-    
-    // Reiniciar para nuevo vehículo
-    resetForNewVehicle();
-}
-
-// Actualizar tabla de resultados
-function updateResultsTable() {
-    // Limpiar tabla
-    domElements.resultsTableBody.innerHTML = '';
-    
-    if (appState.results.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = '<td colspan="7" class="empty-table-message">No hay resultados registrados</td>';
-        domElements.resultsTableBody.appendChild(row);
-        return;
-    }
-    
-    // Ordenar resultados por puntuación (mayor a menor) y tiempo (menor a mayor)
-    const sortedResults = [...appState.results].sort((a, b) => {
-        if (a.score !== b.score) {
-            return b.score - a.score; // Mayor puntuación primero
+        // Pausar una sección
+        function pauseSection(sectionIndex) {
+            const section = appState.sections[sectionIndex];
+            
+            if (section.active && section.timer) {
+                clearInterval(section.timer);
+                section.timer = null;
+                
+                // Actualizar UI
+                domElements.sections[sectionIndex].start.disabled = false;
+                domElements.sections[sectionIndex].start.textContent = 'Continuar';
+                domElements.sections[sectionIndex].pause.disabled = true;
+                domElements.sections[sectionIndex].status.textContent = 'Pausado';
+                
+                addToHistory(`Sección ${section.id} pausada - Tiempo: ${formatTime(section.time)}`);
+            }
         }
-        return a.totalTime - b.totalTime; // Menor tiempo primero
-    });
-    
-    // Agregar cada resultado a la tabla
-    sortedResults.forEach((result, index) => {
-        const row = document.createElement('tr');
-        
-        row.innerHTML = `
-            <td>${result.emoji}</td>
-            <td>${result.id}</td>
-            <td>${result.score}</td>
-            <td>${formatTime(result.sectionTimes[0])}</td>
-            <td>${formatTime(result.sectionTimes[1])}</td>
-            <td>${formatTime(result.sectionTimes[2])}</td>
-            <td>${formatTime(result.totalTime)}</td>
-        `;
-        
-        // Destacar el primer lugar
-        if (index === 0) {
-            row.classList.add('first-place');
+
+        // Completar una sección
+        function completeSection(sectionIndex) {
+            const section = appState.sections[sectionIndex];
+            
+            if (section.active) {
+                if (section.timer) {
+                    clearInterval(section.timer);
+                    section.timer = null;
+                }
+                
+                section.active = false;
+                section.completed = true;
+                
+                // Actualizar UI
+                domElements.sections[sectionIndex].start.disabled = true;
+                domElements.sections[sectionIndex].pause.disabled = true;
+                domElements.sections[sectionIndex].complete.disabled = true;
+                domElements.sections[sectionIndex].linePenalty.disabled = true;
+                domElements.sections[sectionIndex].framePenalty.disabled = true;
+                domElements.sections[sectionIndex].status.textContent = 'Completado';
+                
+                // Habilitar la siguiente sección si existe
+                if (sectionIndex < 2) {
+                    domElements.sections[sectionIndex + 1].start.disabled = false;
+                } else {
+                    // Si es la última sección, mostrar mensaje de finalización
+                    showAlert('¡Recorrido completado! Puede guardar los resultados.');
+                    domElements.saveCurrentVehicle.disabled = false;
+                }
+                
+                updateSectionIndicators();
+                addToHistory(`Sección ${section.id} completada - Tiempo final: ${formatTime(section.time)}`);
+                
+                // Si completa la última sección, mover el vehículo a la meta
+                if (sectionIndex === 2) {
+                    domElements.trackVehicle.style.left = '95%';
+                    addToHistory(`¡${appState.vehicleEmoji} ${appState.vehicleId} ha completado el recorrido!`);
+                } else {
+                    updateVehiclePosition();
+                }
+            }
         }
-        
-        domElements.resultsTableBody.appendChild(row);
-    });
-}
 
-// Exportar resultados a CSV
-function exportResultsToCSV() {
-    if (appState.results.length === 0) {
-        showAlert('No hay resultados para exportar');
-        return;
-    }
-    
-    // Crear cabecera del CSV
-    let csvContent = 'data:text/csv;charset=utf-8,';
-    csvContent += 'Vehículo,Identificador,Puntuación,Tiempo Sección 1,Tiempo Sección 2,Tiempo Sección 3,Tiempo Total,Fecha y Hora\n';
-    
-    // Agregar cada resultado
-    appState.results.forEach(result => {
-        const row = [
-            result.emoji,
-            result.id,
-            result.score,
-            formatTime(result.sectionTimes[0]),
-            formatTime(result.sectionTimes[1]),
-            formatTime(result.sectionTimes[2]),
-            formatTime(result.totalTime),
-            new Date(result.timestamp).toLocaleString()
-        ].join(',');
-        
-        csvContent += row + '\n';
-    });
-    
-    // Crear enlace de descarga
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `resultados_seguidores_linea_${new Date().toISOString().slice(0, 10)}.csv`);
-    document.body.appendChild(link);
-    
-    // Descargar
-    link.click();
-    
-    // Limpiar
-    document.body.removeChild(link);
-}
+        // Aplicar penalización
+        function applyPenalty(sectionIndex, type) {
+            const section = appState.sections[sectionIndex];
+            let penaltyPoints = 0;
+            let penaltyName = '';
+            
+            if (type === 'line') {
+                penaltyPoints = 5;
+                penaltyName = 'Fuera de Línea';
+            } else if (type === 'frame') {
+                penaltyPoints = 20;
+                penaltyName = 'Fuera del Marco';
+            }
+            
+            if (section.active) {
+                appState.totalScore -= penaltyPoints;
+                updateScore();
+                
+                section.penalties.push({
+                    type: penaltyName,
+                    points: penaltyPoints,
+                    time: section.time
+                });
+                
+                addToHistory(`Penalización en Sección ${section.id}: ${penaltyName} (-${penaltyPoints} puntos) - Tiempo: ${formatTime(section.time)}`);
+            }
+        }
 
-// Guardar resultados en localStorage
-function saveResultsToLocalStorage() {
-    try {
-        localStorage.setItem('lineFollowerResults', JSON.stringify(appState.results));
-    } catch (e) {
-        console.error('Error al guardar en localStorage:', e);
-    }
-}
-
-// Cargar resultados desde localStorage
-function loadResultsFromLocalStorage() {
-    try {
-        const savedResults = localStorage.getItem('lineFollowerResults');
-        if (savedResults) {
-            appState.results = JSON.parse(savedResults);
+        // Guardar resultados del vehículo actual
+        function saveVehicleResults() {
+            // Verificar que todas las secciones están completadas
+            const allSectionsCompleted = appState.sections.every(section => section.completed);
+            
+            // Verificar que el vehículo tiene ID
+            if (appState.vehicleId === "Sin identificar") {
+                showAlert('Por favor, identifique el vehículo antes de guardar resultados');
+                return;
+            }
+            
+            // Si no se han completado todas las secciones, confirmar con el usuario
+            if (!allSectionsCompleted) {
+                const confirm = window.confirm('No se han completado todas las secciones. ¿Desea guardar los resultados parciales?');
+                if (!confirm) return;
+            }
+            
+            // Calcular tiempo total
+            const totalTime = appState.sections.reduce((sum, section) => sum + section.time, 0);
+            
+            // Crear objeto de resultado
+            const result = {
+                emoji: appState.vehicleEmoji,
+                id: appState.vehicleId,
+                score: appState.totalScore,
+                sectionTimes: appState.sections.map(section => section.time),
+                totalTime: totalTime,
+                penalties: appState.sections.flatMap(section => 
+                    section.penalties.map(penalty => ({
+                        section: section.id,
+                        ...penalty
+                    }))
+                ),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Agregar a resultados
+            appState.results.push(result);
+            
+            // Actualizar tabla de resultados
             updateResultsTable();
             
             // Habilitar exportación si hay resultados
             if (appState.results.length > 0) {
                 domElements.exportResults.disabled = false;
             }
-        }
-    } catch (e) {
-        console.error('Error al cargar desde localStorage:', e);
-    }
-}
-
-// Reiniciar para nuevo vehículo
-function resetForNewVehicle() {
-    // Detener todos los timers
-    appState.sections.forEach(section => {
-        if (section.timer) {
-            clearInterval(section.timer);
-            section.timer = null;
-        }
-    });
-    
-    // Reiniciar estado
-    appState.currentSection = 0;
-    appState.totalScore = 100;
-    appState.sections.forEach(section => {
-        section.active = false;
-        section.completed = false;
-        section.time = 0;
-        section.penalties = [];
-    });
-    
-    // Reiniciar ID del vehículo y emoji
-    appState.vehicleId = "Sin identificar";
-    domElements.activeVehicleId.textContent = "Sin identificar";
-    domElements.vehicleIdInput.value = "";
-    
-    // Actualizar UI
-    updateScore();
-    updateSectionIndicators();
-    
-    domElements.sections.forEach((sectionElements, index) => {
-        sectionElements.timer.textContent = '00:00.00';
-        sectionElements.start.disabled = index === 0 ? false : true;
-        sectionElements.start.textContent = 'Iniciar';
-        sectionElements.pause.disabled = true;
-        sectionElements.complete.disabled = true;
-        sectionElements.linePenalty.disabled = true;
-        sectionElements.framePenalty.disabled = true;
-        sectionElements.status.textContent = 'En espera';
-    });
-    
-    // Reiniciar posición del vehículo
-    domElements.trackVehicle.style.left = '5%';
-    
-    // Deshabilitar botón de guardar
-    domElements.saveCurrentVehicle.disabled = true;
-    
-    addToHistory('Preparado para nuevo vehículo');
-}
-
-// Reiniciar todo
-function resetAll() {
-    // Confirmar antes de borrar todo
-    const confirm = window.confirm('¿Está seguro que desea reiniciar todo el sistema? Se perderán todos los resultados guardados.');
-    if (!confirm) return;
-    
-    // Reiniciar para nuevo vehículo
-    resetForNewVehicle();
-    
-    // Borrar resultados
-    appState.results = [];
-    updateResultsTable();
-    
-    // Borrar localStorage
-    localStorage.removeItem('lineFollowerResults');
-    
-    // Deshabilitar exportación
-    domElements.exportResults.disabled = true;
-    
-    // Borrar historial
-    domElements.historyList.innerHTML = '';
-    
-    addToHistory('Sistema completamente reiniciado');
-}
-
-// Actualizar la posición del vehículo en la pista
-function updateVehiclePosition() {
-    const section = appState.currentSection;
-    let position;
-    
-    switch(section) {
-        case 0:
-            position = 5; // Inicio
-            break;
-        case 1:
-            position = 16; // Sección 1
-            break;
-        case 2:
-            position = 50; // Sección 2
-            break;
-        case 3:
-            position = 83; // Sección 3
-            break;
-    }
-    
-    domElements.trackVehicle.style.left = `${position}%`;
-}
-
-// Funciones para el ID y emoticón del vehículo
-function initEmoticonSelector() {
-    const options = domElements.emoticonSelector.querySelectorAll('.emoticon-option');
-    
-    options.forEach(option => {
-        option.addEventListener('click', function() {
-            // Eliminar selección anterior
-            options.forEach(opt => opt.classList.remove('emoticon-selected'));
             
-            // Seleccionar el actual
-            this.classList.add('emoticon-selected');
+            // Guardar en localStorage
+            saveResultsToLocalStorage();
             
-            // Actualizar el emoji seleccionado
-            const emoji = this.getAttribute('data-emoji');
-            domElements.selectedEmoji.textContent = emoji;
+            // Mostrar mensaje de confirmación
+            showAlert('Resultados guardados correctamente');
+            
+            // Reiniciar para nuevo vehículo
+            resetForNewVehicle();
+        }
+
+        // Actualizar tabla de resultados
+        function updateResultsTable() {
+            // Limpiar tabla
+            domElements.resultsTableBody.innerHTML = '';
+            
+            if (appState.results.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td colspan="7" class="empty-table-message">No hay resultados registrados</td>';
+                domElements.resultsTableBody.appendChild(row);
+                return;
+            }
+            
+            // Ordenar resultados por puntuación (mayor a menor) y tiempo (menor a mayor)
+            const sortedResults = [...appState.results].sort((a, b) => {
+                if (a.score !== b.score) {
+                    return b.score - a.score; // Mayor puntuación primero
+                }
+                return a.totalTime - b.totalTime; // Menor tiempo primero
+            });
+            
+            // Agregar cada resultado a la tabla
+            sortedResults.forEach((result, index) => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${result.emoji}</td>
+                    <td>${result.id}</td>
+                    <td>${result.score}</td>
+                    <td>${formatTime(result.sectionTimes[0])}</td>
+                    <td>${formatTime(result.sectionTimes[1])}</td>
+                    <td>${formatTime(result.sectionTimes[2])}</td>
+                    <td>${formatTime(result.totalTime)}</td>
+                `;
+                
+                // Destacar el primer lugar
+                if (index === 0) {
+                    row.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+                    row.style.fontWeight = 'bold';
+                }
+                
+                domElements.resultsTableBody.appendChild(row);
+            });
+        }
+
+        // Exportar resultados a CSV
+        function exportResultsToCSV() {
+            if (appState.results.length === 0) {
+                showAlert('No hay resultados para exportar');
+                return;
+            }
+            
+            // Crear cabecera del CSV
+            let csvContent = 'data:text/csv;charset=utf-8,';
+            csvContent += 'Vehículo,Identificador,Puntuación,Tiempo Sección 1,Tiempo Sección 2,Tiempo Sección 3,Tiempo Total,Fecha y Hora\n';
+            
+            // Agregar cada resultado
+            appState.results.forEach(result => {
+                const row = [
+                    result.emoji,
+                    `"${result.id.replace(/"/g, '""')}"`,
+                    result.score,
+                    formatTime(result.sectionTimes[0]),
+                    formatTime(result.sectionTimes[1]),
+                    formatTime(result.sectionTimes[2]),
+                    formatTime(result.totalTime),
+                    new Date(result.timestamp).toLocaleString()
+                ].join(',');
+                
+                csvContent += row + '\n';
+            });
+            
+            // Crear enlace de descarga
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', `resultados_seguidores_linea_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(link);
+            
+            // Descargar
+            link.click();
+            
+            // Limpiar
+            document.body.removeChild(link);
+        }
+
+        // Guardar resultados en localStorage
+        function saveResultsToLocalStorage() {
+            try {
+                localStorage.setItem('lineFollowerResults', JSON.stringify(appState.results));
+            } catch (e) {
+                console.error('Error al guardar en localStorage:', e);
+            }
+        }
+
+        // Cargar resultados desde localStorage
+        function loadResultsFromLocalStorage() {
+            try {
+                const savedResults = localStorage.getItem('lineFollowerResults');
+                if (savedResults) {
+                    appState.results = JSON.parse(savedResults);
+                    updateResultsTable();
+                    
+                    // Habilitar exportación si hay resultados
+                    if (appState.results.length > 0) {
+                        domElements.exportResults.disabled = false;
+                    }
+                }
+            } catch (e) {
+                console.error('Error al cargar desde localStorage:', e);
+            }
+        }
+
+        // Reiniciar para nuevo vehículo
+        function resetForNewVehicle() {
+            // Detener todos los timers
+            appState.sections.forEach(section => {
+                if (section.timer) {
+                    clearInterval(section.timer);
+                    section.timer = null;
+                }
+            });
+            
+            // Reiniciar estado
+            appState.currentSection = 0;
+            appState.totalScore = 100;
+            appState.sections.forEach(section => {
+                section.active = false;
+                section.completed = false;
+                section.time = 0;
+                section.penalties = [];
+            });
+            
+            // Reiniciar ID del vehículo y emoji
+            appState.vehicleId = "Sin identificar";
+            domElements.activeVehicleId.textContent = "Sin identificar";
+            domElements.vehicleIdInput.value = "";
+            
+            // Actualizar UI
+            updateScore();
+            updateSectionIndicators();
+            
+            domElements.sections.forEach((sectionElements, index) => {
+                sectionElements.timer.textContent = '00:00.00';
+                sectionElements.start.disabled = index === 0 ? false : true;
+                sectionElements.start.textContent = 'Iniciar';
+                sectionElements.pause.disabled = true;
+                sectionElements.complete.disabled = true;
+                sectionElements.linePenalty.disabled = true;
+                sectionElements.framePenalty.disabled = true;
+                sectionElements.status.textContent = 'En espera';
+            });
+            
+            // Reiniciar posición del vehículo
+            domElements.trackVehicle.style.left = '5%';
+            
+            // Deshabilitar botón de guardar
+            domElements.saveCurrentVehicle.disabled = true;
+            
+            addToHistory('Preparado para nuevo vehículo');
+        }
+
+        // Reiniciar todo
+        function resetAll() {
+            // Confirmar antes de borrar todo
+            const confirm = window.confirm('¿Está seguro que desea reiniciar todo el sistema? Se perderán todos los resultados guardados.');
+            if (!confirm) return;
+            
+            // Reiniciar para nuevo vehículo
+            resetForNewVehicle();
+            
+            // Borrar resultados
+            appState.results = [];
+            updateResultsTable();
+            
+            // Borrar localStorage
+            localStorage.removeItem('lineFollowerResults');
+            
+            // Deshabilitar exportación
+            domElements.exportResults.disabled = true;
+            
+            // Borrar historial
+            domElements.historyList.innerHTML = '';
+            
+            addToHistory('Sistema completamente reiniciado');
+        }
+
+        // Actualizar la posición del vehículo en la pista
+        function updateVehiclePosition() {
+            const section = appState.currentSection;
+            let position;
+            
+            switch(section) {
+                case 0:
+                    position = 5; // Inicio
+                    break;
+                case 1:
+                    position = 16; // Sección 1
+                    break;
+                case 2:
+                    position = 50; // Sección 2
+                    break;
+                case 3:
+                    position = 83; // Sección 3
+                    break;
+            }
+            
+            domElements.trackVehicle.style.left = `${position}%`;
+        }
+
+        // Funciones para el ID y emoticón del vehículo
+        function initEmoticonSelector() {
+            const options = domElements.emoticonSelector.querySelectorAll('.emoticon-option');
+            
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Eliminar selección anterior
+                    options.forEach(opt => opt.classList.remove('emoticon-selected'));
+                    
+                    // Seleccionar el actual
+                    this.classList.add('emoticon-selected');
+                    
+                    // Actualizar el emoji seleccionado
+                    const emoji = this.getAttribute('data-emoji');
+                    domElements.selectedEmoji.textContent = emoji;
+                });
+            });
+            
+            // Seleccionar el primer emoticón por defecto
+            options[0].classList.add('emoticon-selected');
+        }
+
+        function saveVehicleId() {
+            const id = domElements.vehicleIdInput.value.trim();
+            const emoji = domElements.selectedEmoji.textContent;
+            
+            if (id) {
+                appState.vehicleId = id;
+                appState.vehicleEmoji = emoji;
+                
+                domElements.activeVehicleId.textContent = id;
+                domElements.trackVehicle.textContent = emoji;
+                
+                addToHistory(`Vehículo identificado: ${emoji} ${id}`);
+            } else {
+                showAlert('Por favor, ingrese un ID para el vehículo');
+            }
+        }
+
+        // Event Listeners
+        domElements.sections.forEach((sectionElements, index) => {
+            sectionElements.start.addEventListener('click', () => startSection(index));
+            sectionElements.pause.addEventListener('click', () => pauseSection(index));
+            sectionElements.complete.addEventListener('click', () => completeSection(index));
+            sectionElements.linePenalty.addEventListener('click', () => applyPenalty(index, 'line'));
+            sectionElements.framePenalty.addEventListener('click', () => applyPenalty(index, 'frame'));
         });
-    });
-    
-    // Seleccionar el primer emoticón por defecto
-    options[0].classList.add('emoticon-selected');
-}
 
-function saveVehicleId() {
-    const id = domElements.vehicleIdInput.value.trim();
-    const emoji = domElements.selectedEmoji.textContent;
-    
-    if (id) {
-        appState.vehicleId = id;
-        appState.vehicleEmoji = emoji;
-        
-        domElements.activeVehicleId.textContent = id;
-        domElements.trackVehicle.textContent = emoji;
-        
-        addToHistory(`Vehículo identificado: ${emoji} ${id}`);
-    } else {
-        showAlert('Por favor, ingrese un ID para el vehículo');
-    }
-}
+        domElements.resetAll.addEventListener('click', resetAll);
+        domElements.saveVehicleId.addEventListener('click', saveVehicleId);
+        domElements.saveCurrentVehicle.addEventListener('click', saveVehicleResults);
+        domElements.exportResults.addEventListener('click', exportResultsToCSV);
 
-// Event Listeners
-domElements.sections.forEach((sectionElements, index) => {
-    sectionElements.start.addEventListener('click', () => startSection(index));
-    sectionElements.pause.addEventListener('click', () => pauseSection(index));
-    sectionElements.complete.addEventListener('click', () => completeSection(index));
-    sectionElements.linePenalty.addEventListener('click', () => applyPenalty(index, 'line'));
-    sectionElements.framePenalty.addEventListener('click', () => applyPenalty(index, 'frame'));
-});
+        // Inicializar
+        function initialize() {
+            initEmoticonSelector();
+            updateSectionIndicators();
+            createStars(); // Inicializar el fondo estrellado
+            loadResultsFromLocalStorage();
+            domElements.saveCurrentVehicle.disabled = true;
+            addToHistory('Sistema inicializado');
+        }
 
-domElements.resetAll.addEventListener('click', resetAll);
-domElements.saveVehicleId.addEventListener('click', saveVehicleId);
-domElements.saveCurrentVehicle.addEventListener('click', saveVehicleResults);
-domElements.exportResults.addEventListener('click', exportResultsToCSV);
-
-// Inicializar
-function initialize() {
-    initEmoticonSelector();
-    updateSectionIndicators();
-    createStars(); // Inicializar el fondo estrellado
-    loadResultsFromLocalStorage();
-    domElements.saveCurrentVehicle.disabled = true;
-    addToHistory('Sistema inicializado');
-}
-
-// Llamar a la función de inicialización
-initialize();
-</script>
+        // Llamar a la función de inicialización
+        initialize();
+    </script>
 </body>
 </html>
