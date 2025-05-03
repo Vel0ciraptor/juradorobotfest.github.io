@@ -2,39 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puntuación Vehículos Seguidores de Línea</title>
     <style>
-        :root {
-            --primary-color: #3498db;
-            --primary-hover: #2980b9;
-            --warning-color: #f39c12;
-            --warning-hover: #e67e22;
-            --danger-color: #e74c3c;
-            --danger-hover: #c0392b;
-            --success-color: #2ecc71;
-            --success-hover: #27ae60;
-            --bg-color: #0f1c3f;
-            --container-bg: rgba(25, 34, 66, 0.85);
-            --section-bg: rgba(32, 43, 81, 0.7);
-            --text-color: #f5f5f5;
-            --highlight-color: #7caeff;
-        }
-        
-        * {
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #0f1c3f;
+            color: #f5f5f5;
             overflow-x: hidden;
             position: relative;
-            font-size: 1rem;
-            line-height: 1.5;
         }
         
         /* Estilo para el fondo estrellado */
@@ -62,9 +40,8 @@
         
         .container {
             max-width: 800px;
-            width: 100%;
             margin: 0 auto;
-            background-color: var(--container-bg);
+            background-color: rgba(25, 34, 66, 0.85);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(87, 181, 255, 0.3);
@@ -73,28 +50,17 @@
         
         h1 {
             text-align: center;
-            color: var(--highlight-color);
+            color: #7caeff;
             text-shadow: 0 0 8px rgba(124, 174, 255, 0.5);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 0;
-        }
-        
-        h3 {
-            font-size: 1.2rem;
-            margin-top: 0;
+            margin-bottom: 25px;
         }
         
         .section {
-            margin-bottom: 1.25rem;
-            padding: 1rem;
+            margin-bottom: 20px;
+            padding: 15px;
             border: 1px solid #344178;
             border-radius: 5px;
-            background-color: var(--section-bg);
+            background-color: rgba(32, 43, 81, 0.7);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
@@ -105,39 +71,44 @@
         }
         
         .timer-display {
-            font-size: 1.5rem;
+            font-size: 24px;
             text-align: center;
-            margin: 0.625rem 0;
+            margin: 10px 0;
             font-weight: bold;
-            color: var(--highlight-color);
+            color: #7caeff;
         }
         
         .controls {
             display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
             flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 10px; /* Espacio entre botones */
+            width: 100%; /* Asegura que ocupe todo el ancho */
         }
+        
+        .controls button {
+    flex-grow: 1; /* Los botones crecerán proporcionalmente */
+    min-width: 120px; /* Ancho mínimo para mantener legibilidad */
+    max-width: 300px; /* Ancho máximo opcional para evitar que se estiren demasiado */
+    text-align: center;
+}
         
         .penalties {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-around;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         
         button {
-            padding: 0.5rem 1rem;
+            padding: 8px 16px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.875rem;
+            font-size: 14px;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            flex: 1 1 auto;
-            min-width: 100px;
         }
         
         button:hover {
@@ -157,46 +128,46 @@
         }
         
         .btn-primary {
-            background-color: var(--primary-color);
+            background-color: #3498db;
             color: white;
         }
         
         .btn-primary:hover {
-            background-color: var(--primary-hover);
+            background-color: #2980b9;
         }
         
         .btn-warning {
-            background-color: var(--warning-color);
+            background-color: #f39c12;
             color: white;
         }
         
         .btn-warning:hover {
-            background-color: var(--warning-hover);
+            background-color: #e67e22;
         }
         
         .btn-danger {
-            background-color: var(--danger-color);
+            background-color: #e74c3c;
             color: white;
         }
         
         .btn-danger:hover {
-            background-color: var(--danger-hover);
+            background-color: #c0392b;
         }
         
         .btn-success {
-            background-color: var(--success-color);
+            background-color: #2ecc71;
             color: white;
         }
         
         .btn-success:hover {
-            background-color: var(--success-hover);
+            background-color: #27ae60;
         }
         
         .score {
-            font-size: 1.4rem;
+            font-size: 22px;
             text-align: center;
-            margin: 1.25rem 0;
-            padding: 1rem;
+            margin: 20px 0;
+            padding: 15px;
             border-radius: 8px;
             background-color: rgba(44, 62, 80, 0.7);
             color: white;
@@ -212,10 +183,8 @@
         
         .section-title {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
         }
         
         .section-indicator {
@@ -223,37 +192,36 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            margin-right: 0.625rem;
+            margin-right: 10px;
             background-color: #344178;
             transition: all 0.3s ease;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
         }
         
         .section-active {
-            background-color: var(--success-color);
-            box-shadow: 0 0 10px var(--success-color);
+            background-color: #27ae60;
+            box-shadow: 0 0 10px #2ecc71;
         }
         
         .section-completed {
-            background-color: var(--primary-color);
-            box-shadow: 0 0 10px var(--primary-color);
+            background-color: #3498db;
+            box-shadow: 0 0 10px #3498db;
         }
         
         .history {
-            margin-top: 1.25rem;
+            margin-top: 20px;
             max-height: 200px;
             overflow-y: auto;
-            padding: 0.625rem;
+            padding: 10px;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(27, 38, 72, 0.7);
         }
         
         .history-item {
-            padding: 0.5rem;
+            padding: 8px;
             border-bottom: 1px solid #344178;
             color: #ddd;
-            font-size: 0.875rem;
         }
         
         .history-item:last-child {
@@ -262,23 +230,19 @@
         
         .section-time {
             font-weight: bold;
-            margin-right: 0.625rem;
-            color: var(--highlight-color);
+            margin-right: 10px;
+            color: #7caeff;
         }
         
         .reset-container {
             text-align: center;
-            margin-top: 1.25rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.625rem;
+            margin-top: 20px;
         }
         
         /* Estilos para el selector de ID y emoticones */
         .vehicle-id-section {
-            margin-bottom: 1.25rem;
-            padding: 1rem;
+            margin-bottom: 20px;
+            padding: 15px;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(25, 46, 120, 0.7);
@@ -287,16 +251,16 @@
         
         .emoticon-selector {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-            gap: 0.625rem;
-            margin-top: 0.625rem;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+            margin-top: 10px;
         }
         
         .emoticon-option {
-            font-size: 1.5rem;
+            font-size: 24px;
             cursor: pointer;
             text-align: center;
-            padding: 0.5rem;
+            padding: 8px;
             border-radius: 8px;
             transition: all 0.3s ease;
             background-color: rgba(22, 36, 82, 0.7);
@@ -314,25 +278,23 @@
         
         .vehicle-details {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            margin-top: 1rem;
-            padding: 0.625rem;
+            margin-top: 15px;
+            padding: 10px;
             background-color: rgba(22, 36, 82, 0.7);
             border-radius: 8px;
-            gap: 1rem;
+            flex-wrap: wrap;
         }
         
         .vehicle-emoji {
-            font-size: 2.25rem;
-            margin-right: 1rem;
+            font-size: 36px;
+            margin-right: 15px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-            flex-shrink: 0;
         }
         
         .track-visualization {
-            margin: 1.25rem 0;
-            padding: 1rem;
+            margin: 20px 0;
+            padding: 15px;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(22, 36, 82, 0.7);
@@ -340,7 +302,7 @@
         
         .track {
             position: relative;
-            height: 120px;
+            height: 180px;
             background-color: #1a1a2e;
             border-radius: 40px;
             overflow: hidden;
@@ -395,12 +357,11 @@
         
         .section-label {
             position: absolute;
-            bottom: 0.625rem;
+            bottom: 10px;
             color: white;
             font-weight: bold;
             z-index: 2;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-            font-size: 0.875rem;
         }
         
         .section-1-label {
@@ -417,7 +378,7 @@
         
         .track-vehicle {
             position: absolute;
-            font-size: 1.75rem;
+            font-size: 28px;
             z-index: 3;
             top: 50%;
             transform: translateY(-50%);
@@ -426,24 +387,82 @@
         }
         
         .id-input {
-            padding: 0.625rem;
-            border: 1px solid #344178;
-            border-radius: 4px;
-            font-size: 1rem;
-            width: 100%;
-            margin-bottom: 0.625rem;
-            background-color: rgba(22, 36, 82, 0.7);
-            color: white;
+            padding: 10px 12px; /* Más espacio horizontal en móviles */
+    border: 1px solid #344178;
+    border-radius: 4px;
+    font-size: clamp(14px, 3vw, 16px); /* Tamaño de fuente responsivo */
+    width: 100%;
+    max-width: 100%; /* Previene desbordamiento */
+    margin-bottom: 10px;
+    background-color: rgba(22, 36, 82, 0.7);
+    color: white;
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+    
+    /* Mejoras para móviles */
+    -webkit-appearance: none; /* Elimina estilos nativos en iOS */
+    min-height: 44px; /* Tamaño mínimo táctil recomendado */
+    
+    /* Transición suave para focus */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .id-input::placeholder {
-            color: #8f9bbc;
-        }
+        /* Estilo para estado focus */
+.id-input:focus {
+    outline: none;
+    border-color: #7caeff;
+    box-shadow: 0 0 0 2px rgba(124, 174, 255, 0.3);
+}
+
+/* Placeholder responsivo */
+.id-input::placeholder {
+    color: #8f9bbc;
+    font-size: clamp(12px, 2.5vw, 14px);
+    opacity: 1; /* Firefox reduce opacidad por defecto */
+}
+
+/* Media queries para ajustes específicos */
+@media (max-width: 768px) {
+    .id-input {
+        padding: 12px 14px; /* Más grande en móviles */
+        font-size: 15px; /* Tamaño fijo para mejor legibilidad */
+    }
+}
+
+@media (max-width: 480px) {
+    .id-input {
+        padding: 14px 16px;
+        min-height: 48px; /* Más grande para pantallas pequeñas */
+    }
+    
+    .id-input::placeholder {
+        font-size: 14px;
+    }
+}
         
         /* Estilos para la tabla de resultados */
         .results-section {
-            margin-top: 1.875rem;
-            padding: 1rem;
+            overflow-x: auto; /* Permite desplazamiento horizontal */
+                -webkit-overflow-scrolling: touch; /* Mejor desplazamiento en móviles */
+        }
+    
+        .results-table {
+            min-width: 600px; /* Ancho mínimo para mantener legibilidad */
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .results-table {
+             font-size: 14px; /* Reducir tamaño de fuente en móviles */
+            }
+    
+    .results-table th, 
+    .results-table td {
+        padding: 8px 4px; /* Reducir padding en móviles */
+    }
+}
+        .results-section {
+            margin-top: 30px;
+            padding: 15px;
             border: 1px solid #344178;
             border-radius: 5px;
             background-color: rgba(25, 46, 120, 0.7);
@@ -452,20 +471,19 @@
         .results-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 15px;
             border-radius: 5px;
             overflow: hidden;
-            font-size: 0.875rem;
         }
         
         .results-table th, .results-table td {
             border: 1px solid #344178;
-            padding: 0.75rem 0.5rem;
+            padding: 12px 8px;
             text-align: center;
         }
         
         .results-table th {
-            background-color: var(--primary-color);
+            background-color: #3498db;
             color: white;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
@@ -484,21 +502,21 @@
         
         .empty-table-message {
             text-align: center;
-            padding: 1.25rem;
+            padding: 20px;
             color: #8f9bbc;
             font-style: italic;
         }
         
         .export-btn {
             display: block;
-            margin: 1.25rem auto;
-            padding: 0.75rem 1.5rem;
+            margin: 20px auto;
+            padding: 12px 24px;
             background-color: #2c3e50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 16px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
@@ -522,7 +540,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 0.9375rem 1.5625rem;
+            padding: 15px 25px;
             background-color: rgba(46, 204, 113, 0.9);
             color: white;
             border-radius: 5px;
@@ -531,9 +549,6 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
-            font-size: 0.875rem;
-            max-width: 90%;
-            text-align: center;
         }
         
         .alert.show {
@@ -558,148 +573,145 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(87, 119, 201, 0.9);
         }
-        
-        .section-indicators {
+
+        /* Estilos para la sección única con los tres tiempos */
+        .times-container {
             display: flex;
-            justify-content: center;
-            margin: 1.25rem 0;
-            gap: 1rem;
+            justify-content: space-between;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
         
-        /* Media Queries para responsividad */
+        .time-box {
+            width: 30%;
+            background-color: rgba(22, 36, 82, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .time-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .time-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #7caeff;
+        }
+
+        /* Estilos para los botones de checkpoint - Semáforo verde brillante */
+.checkpoint-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.traffic-light {
+    position: relative;
+    padding-left: 50px;
+    min-height: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.traffic-light .light {
+    position: absolute;
+    left: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #2ecc71;
+    box-shadow: 0 0 10px #2ecc71, 
+                0 0 20px #2ecc71,
+                inset 0 0 5px rgba(255, 255, 255, 0.5);
+    animation: pulse-green 1.5s infinite alternate;
+}
+
+.traffic-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.traffic-light:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.traffic-light:disabled .light {
+    background-color: #34495e;
+    box-shadow: none;
+    animation: none;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 5px #2ecc71, 
+                    0 0 10px #2ecc71,
+                    inset 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px #2ecc71, 
+                    0 0 30px #2ecc71,
+                    inset 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .checkpoint-buttons {
+        flex-direction: column;
+    }
+    
+    .traffic-light {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+        /* Media Queries para diseño responsivo */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                font-size: 0.9375rem;
-            }
-            
             .container {
                 padding: 15px;
             }
             
-            h1 {
-                font-size: 1.5rem;
+            .time-box {
+                width: 100%;
+                margin-bottom: 15px;
             }
             
-            h2 {
-                font-size: 1.25rem;
+            .controls button, .penalties button {
+                margin-bottom: 10px;
+                width: 100%;
             }
             
-            h3 {
-                font-size: 1.1rem;
-            }
-            
-            .timer-display {
-                font-size: 1.25rem;
-            }
-            
-            .score {
-                font-size: 1.25rem;
-                padding: 0.75rem;
-            }
-            
-            button {
-                padding: 0.5rem;
-                font-size: 0.8125rem;
-                min-width: 80px;
-            }
-            
-            .track {
-                height: 100px;
-            }
-            
-            .track-vehicle {
-                font-size: 1.5rem;
-            }
-            
-            .section-label {
-                font-size: 0.75rem;
-            }
-            
-            .vehicle-emoji {
-                font-size: 1.75rem;
-            }
-            
-            .emoticon-option {
-                font-size: 1.25rem;
-                padding: 0.25rem;
-            }
-            
-            .results-table {
-                font-size: 0.75rem;
-            }
-            
-            .results-table th, 
-            .results-table td {
-                padding: 0.5rem 0.25rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 5px;
-                font-size: 0.875rem;
-            }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 1.3rem;
-                margin-bottom: 1rem;
-            }
-            
-            h2 {
-                font-size: 1.15rem;
-            }
-            
-            .timer-display {
-                font-size: 1.1rem;
-            }
-            
-            .score {
-                font-size: 1.1rem;
-                padding: 0.5rem;
-            }
-            
-            button {
-                padding: 0.4rem;
-                font-size: 0.75rem;
-                min-width: 70px;
-            }
-            
-            .controls, .penalties {
+            .penalties {
                 flex-direction: column;
             }
             
-            .track {
-                height: 80px;
-                border-radius: 20px;
+            .checkpoint-buttons {
+                flex-direction: column;
             }
             
-            .track-vehicle {
-                font-size: 1.25rem;
-            }
-            
-            .section-label {
-                font-size: 0.65rem;
-                bottom: 5px;
-            }
-            
-            .vehicle-emoji {
-                font-size: 1.5rem;
-                margin-right: 0.5rem;
-            }
-            
-            .emoticon-selector {
-                grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-                gap: 5px;
-            }
-            
-            .emoticon-option {
-                font-size: 1rem;
-                padding: 0.2rem;
+            .checkpoint-btn {
+                margin: 5px 0;
+                width: 100%;
             }
             
             .vehicle-details {
@@ -707,16 +719,71 @@
                 align-items: flex-start;
             }
             
-            .vehicle-details button {
-                margin-top: 0.5rem;
-                margin-left: 0 !important;
+            .vehicle-emoji {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            #saveVehicleId {
+                margin-top: 10px;
                 width: 100%;
             }
             
-            .results-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
+            .emoticon-selector {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .track {
+                height: 120px;
+            }
+            
+            .section-label {
+                font-size: 12px;
+            }
+            
+            .timer-display {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .section {
+                padding: 10px;
+            }
+            
+            .timer-display {
+                font-size: 18px;
+            }
+            
+            .score {
+                font-size: 18px;
+                padding: 10px;
+            }
+            
+            .emoticon-selector {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .track {
+                height: 100px;
+                border-radius: 20px;
+            }
+            
+            .track-vehicle {
+                font-size: 20px;
+            }
+            
+            .section-label {
+                font-size: 10px;
+                bottom: 5px;
             }
         }
     </style>
@@ -781,64 +848,57 @@
             </div>
         </div>
         
-        <div class="score">
-            Puntuación Total: <span id="totalScore">100</span>
-        </div>
         
-        <div class="section-indicators">
-            <div class="section-indicator" id="indicator-1"></div>
-            <div class="section-indicator" id="indicator-2"></div>
-            <div class="section-indicator" id="indicator-3"></div>
-        </div>
-        
-        <div class="section" id="section-1">
+        <!-- SECCIÓN ÚNICA CON LOS TRES TIEMPOS -->
+        <div class="section" id="unified-section">
             <div class="section-title">
-                <h2>Sección 1</h2>
-                <span id="section1-status">En espera</span>
+                <h2>Control de Recorrido</h2>
+                <span id="section-status">En espera</span>
             </div>
-            <div class="timer-display" id="timer1">00:00.00</div>
+            
+            <!-- Contenedor de los tres tiempos -->
+            <div class="times-container">
+                <div class="time-box">
+                    <div class="time-label">Tiempo Sección 1</div>
+                    <div class="timer-display" id="timer1">00:00</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-label">Tiempo Sección 2</div>
+                    <div class="timer-display" id="timer2">00:00</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-label">Tiempo Sección 3</div>
+                    <div class="timer-display" id="timer3">00:00</div>
+                </div>
+            </div>
+            
+            <div class="score">
+                Puntuación Total: <span id="totalScore">100</span>
+            </div>
+            
+            <!-- Controles principales -->
+            <div class="checkpoint-buttons">
+                <button class="checkpoint-btn traffic-light" id="checkpoint1" disabled>
+                <span class="light"></span>
+                Sección 1 
+            </button>
+                <button class="checkpoint-btn traffic-light" id="checkpoint2" disabled>
+                <span class="light"></span>
+                Sección 2
+            </button>
+            </div>
+            
+            
             <div class="controls">
-                <button class="btn-primary" id="start1">Iniciar</button>
-                <button class="btn-warning" id="pause1" disabled>Pausar</button>
-                <button class="btn-success" id="complete1" disabled>Completar Sección</button>
+                <button class="btn-primary" id="startRun">Iniciar Recorrido</button>
+                <button class="btn-warning" id="pauseRun" disabled>Pausar</button>
+                <button class="btn-success" id="completeRun" disabled>Completar Recorrido</button>
             </div>
+            
+            <!-- Penalizaciones -->
             <div class="penalties">
-                <button class="btn-danger" id="linePenalty1" disabled>Fuera de Línea (-5)</button>
-                <button class="btn-danger" id="framePenalty1" disabled>Fuera del Marco (-20)</button>
-            </div>
-        </div>
-        
-        <div class="section" id="section-2">
-            <div class="section-title">
-                <h2>Sección 2</h2>
-                <span id="section2-status">En espera</span>
-            </div>
-            <div class="timer-display" id="timer2">00:00.00</div>
-            <div class="controls">
-                <button class="btn-primary" id="start2" disabled>Iniciar</button>
-                <button class="btn-warning" id="pause2" disabled>Pausar</button>
-                <button class="btn-success" id="complete2" disabled>Completar Sección</button>
-            </div>
-            <div class="penalties">
-                <button class="btn-danger" id="linePenalty2" disabled>Fuera de Línea (-5)</button>
-                <button class="btn-danger" id="framePenalty2" disabled>Fuera del Marco (-20)</button>
-            </div>
-        </div>
-        
-        <div class="section" id="section-3">
-            <div class="section-title">
-                <h2>Sección 3</h2>
-                <span id="section3-status">En espera</span>
-            </div>
-            <div class="timer-display" id="timer3">00:00.00</div>
-            <div class="controls">
-                <button class="btn-primary" id="start3" disabled>Iniciar</button>
-                <button class="btn-warning" id="pause3" disabled>Pausar</button>
-                <button class="btn-success" id="complete3" disabled>Completar Sección</button>
-            </div>
-            <div class="penalties">
-                <button class="btn-danger" id="linePenalty3" disabled>Fuera de Línea (-5)</button>
-                <button class="btn-danger" id="framePenalty3" disabled>Fuera del Marco (-20)</button>
+                <button class="btn-danger" id="linePenalty" disabled>Fuera de Línea (-5)</button>
+                <button class="btn-danger" id="framePenalty" disabled>Fuera del Marco (-20)</button>
             </div>
         </div>
         
@@ -869,16 +929,17 @@
             <button class="export-btn" id="exportResults" disabled>Exportar Resultados (CSV)</button>
         </div>
         
+        
+        <div class="reset-container">
+            <button class="btn-danger" id="resetAll">Reiniciar Todo</button>
+            <button class="btn-warning" id="saveCurrentVehicle" style="margin-left: 10px;">Guardar Resultados y Nuevo Vehículo</button>
+        </div>
+    </div>
+    
         <div class="history">
             <h3>Historial</h3>
             <div id="historyList"></div>
         </div>
-        
-        <div class="reset-container">
-            <button class="btn-danger" id="resetAll">Reiniciar Todo</button>
-            <button class="btn-warning" id="saveCurrentVehicle">Guardar Resultados y Nuevo Vehículo</button>
-        </div>
-    </div>
 
     <script>
         // Estado de la aplicación
@@ -887,12 +948,17 @@
             totalScore: 100,
             vehicleId: "Sin identificar",
             vehicleEmoji: "🚗",
+            running: false,
+            paused: false,
+            timer: null,
+            startTime: 0,
+            elapsedTime: 0,
             sections: [
-                { id: 1, active: false, completed: false, time: 0, timer: null, penalties: [] },
-                { id: 2, active: false, completed: false, time: 0, timer: null, penalties: [] },
-                { id: 3, active: false, completed: false, time: 0, timer: null, penalties: [] }
+                { completed: false, time: 0, checkpoint: 0 },
+                { completed: false, time: 0, checkpoint: 0 },
+                { completed: false, time: 0, checkpoint: 0 }
             ],
-            // Array para almacenar los resultados de todos los vehículos
+            penalties: [],
             results: []
         };
 
@@ -900,23 +966,26 @@
         const domElements = {
             totalScore: document.getElementById('totalScore'),
             indicators: [
-                document.getElementById('indicator-1'),
-                document.getElementById('indicator-2'),
-                document.getElementById('indicator-3')
+                document.getElementById('trackSection1'),
+                document.getElementById('trackSection2'),
+                document.getElementById('trackSection3')
             ],
-            sections: [1, 2, 3].map(i => ({
-                timer: document.getElementById(`timer${i}`),
-                start: document.getElementById(`start${i}`),
-                pause: document.getElementById(`pause${i}`),
-                complete: document.getElementById(`complete${i}`),
-                linePenalty: document.getElementById(`linePenalty${i}`),
-                framePenalty: document.getElementById(`framePenalty${i}`),
-                status: document.getElementById(`section${i}-status`),
-                trackSection: document.getElementById(`trackSection${i}`)
-            })),
+            timers: [
+                document.getElementById('timer1'),
+                document.getElementById('timer2'),
+                document.getElementById('timer3')
+            ],
+            sectionStatus: document.getElementById('section-status'),
+            startRun: document.getElementById('startRun'),
+            pauseRun: document.getElementById('pauseRun'),
+            completeRun: document.getElementById('completeRun'),
+            checkpoint1: document.getElementById('checkpoint1'),
+            checkpoint2: document.getElementById('checkpoint2'),
+            linePenalty: document.getElementById('linePenalty'),
+            framePenalty: document.getElementById('framePenalty'),
             historyList: document.getElementById('historyList'),
             resetAll: document.getElementById('resetAll'),
-            // Nuevos elementos para el ID y emoticón
+            // Elementos para el ID y emoticón
             vehicleIdInput: document.getElementById('vehicleId'),
             emoticonSelector: document.getElementById('emoticonSelector'),
             selectedEmoji: document.getElementById('selectedEmoji'),
@@ -934,7 +1003,7 @@
 
         // Inicializar el fondo estrellado
         function createStars() {
-            const starsCount = window.innerWidth < 768 ? 80 : 150;
+            const starsCount = 150;
             
             for (let i = 0; i < starsCount; i++) {
                 const star = document.createElement('div');
@@ -977,250 +1046,352 @@
             }, 3000);
         }
 
-        // Actualizar el estado visual de los indicadores de sección
-        function updateSectionIndicators() {
-            appState.sections.forEach((section, index) => {
-                if (section.active) {
-                    domElements.indicators[index].className = 'section-indicator section-active';
-                    domElements.sections[index].trackSection.classList.add('active');
-                    domElements.sections[index].trackSection.classList.remove('completed');
-                } else if (section.completed) {
-                    domElements.indicators[index].className = 'section-indicator section-completed';
-                    domElements.sections[index].trackSection.classList.add('completed');
-                    domElements.sections[index].trackSection.classList.remove('active');
-                                    } else {
-                    domElements.indicators[index].className = 'section-indicator';
-                    domElements.sections[index].trackSection.classList.remove('active', 'completed');
+        // Actualizar visualización de la pista
+        function updateTrackVisualization() {
+            // Actualizar visualización de secciones completadas
+            for (let i = 0; i < 3; i++) {
+                if (appState.sections[i].completed) {
+                    domElements.indicators[i].classList.add('completed');
+                    domElements.indicators[i].classList.remove('active');
+                } else if (i === appState.currentSection) {
+                    domElements.indicators[i].classList.add('active');
+                    domElements.indicators[i].classList.remove('completed');
+                } else {
+                    domElements.indicators[i].classList.remove('active', 'completed');
+                    // Continuación del código desde donde se truncó
+
                 }
-            });
+            }
+
+            // Actualizar posición del vehículo en la pista
+            let vehiclePos = 5; // Posición inicial (%)
+            
+            if (appState.currentSection === 0) {
+                vehiclePos = appState.running ? 15 : 5;
+            } else if (appState.currentSection === 1) {
+                vehiclePos = 49;
+            } else if (appState.currentSection === 2) {
+                vehiclePos = 82;
+            }
+            
+            domElements.trackVehicle.style.left = `${vehiclePos}%`;
+            domElements.trackVehicle.textContent = appState.vehicleEmoji;
         }
 
-        // Actualizar puntuación total
-        function updateScore() {
+        // Actualizar el estado de la sección
+        function updateSectionStatus() {
+            let status = "En espera";
+            
+            if (appState.running) {
+                if (appState.paused) {
+                    status = "Pausado";
+                } else {
+                    status = `Sección ${appState.currentSection + 1} en curso`;
+                }
+            } else if (appState.sections[2].completed) {
+                status = "Recorrido completado";
+            }
+            
+            domElements.sectionStatus.textContent = status;
+        }
+
+        // Iniciar el recorrido
+        function startRun() {
+            if (appState.vehicleId === "Sin identificar") {
+                showAlert("Por favor, identifique el vehículo antes de iniciar");
+                return;
+            }
+            
+            if (!appState.running) {
+                appState.running = true;
+                appState.paused = false;
+                appState.currentSection = 0;
+                appState.startTime = Date.now() - appState.elapsedTime;
+                
+                domElements.startRun.disabled = true;
+                domElements.pauseRun.disabled = false;
+                domElements.completeRun.disabled = false;
+                domElements.checkpoint1.disabled = false;
+                domElements.linePenalty.disabled = false;
+                domElements.framePenalty.disabled = false;
+                domElements.saveVehicleId.disabled = true;
+                domElements.vehicleIdInput.disabled = true;
+                
+                // Iniciar el cronómetro
+                appState.timer = setInterval(updateTimer, 10);
+                
+                addToHistory(`Recorrido iniciado para ${appState.vehicleId} ${appState.vehicleEmoji}`);
+                updateSectionStatus();
+            }
+            
+            updateTrackVisualization();
+        }
+
+        // Pausar el recorrido
+        function pauseRun() {
+            if (appState.running && !appState.paused) {
+                appState.paused = true;
+                clearInterval(appState.timer);
+                
+                domElements.pauseRun.textContent = "Reanudar";
+                addToHistory("Recorrido pausado");
+            } else if (appState.running && appState.paused) {
+                appState.paused = false;
+                appState.startTime = Date.now() - appState.elapsedTime;
+                appState.timer = setInterval(updateTimer, 10);
+                
+                domElements.pauseRun.textContent = "Pausar";
+                addToHistory("Recorrido reanudado");
+            }
+            
+            updateSectionStatus();
+        }
+
+        // Completar el recorrido
+        function completeRun() {
+    if (!appState.running) return;
+    
+    clearInterval(appState.timer);
+    
+    // Calcular el tiempo de la sección actual
+    const sectionStartTime = appState.currentSection > 0 ? 
+        appState.sections[appState.currentSection - 1].time + 
+        (appState.currentSection > 1 ? appState.sections[appState.currentSection - 2].time : 0) : 0;
+    appState.sections[appState.currentSection].time = appState.elapsedTime - sectionStartTime;
+    appState.sections[appState.currentSection].completed = true;
+    
+    // Si no estamos en la última sección, avanzar a la siguiente
+    if (appState.currentSection < 2) {
+        appState.currentSection++;
+        appState.timer = setInterval(updateTimer, 10);
+        
+        if (appState.currentSection === 1) {
+            domElements.checkpoint1.disabled = true;
+            domElements.checkpoint2.disabled = false;
+            addToHistory("Sección 1 completada");
+        } else {
+            domElements.checkpoint2.disabled = true;
+            addToHistory("Sección 2 completada");
+        }
+    } else {
+        // Completar el recorrido entero
+        appState.running = false;
+        domElements.startRun.disabled = false;
+        domElements.pauseRun.disabled = true;
+        domElements.completeRun.disabled = true;
+        domElements.linePenalty.disabled = true;
+        domElements.framePenalty.disabled = true;
+        domElements.pauseRun.textContent = "Pausar";
+        domElements.saveVehicleId.disabled = false;
+        domElements.vehicleIdInput.disabled = false;
+        
+        addToHistory("Recorrido completado");
+        showAlert("¡Recorrido completado!");
+    }
+    
+    updateSectionStatus();
+    updateTrackVisualization();
+}
+
+        // Registrar checkpoint
+        function registerCheckpoint(checkpointNum) {
+            if (!appState.running || appState.paused) return;
+            
+            if (checkpointNum === 1 && appState.currentSection === 0) {
+                appState.sections[0].checkpoint = appState.elapsedTime;
+                addToHistory("Checkpoint 1 registrado");
+            } else if (checkpointNum === 2 && appState.currentSection === 1) {
+                appState.sections[1].checkpoint = appState.elapsedTime - appState.sections[0].time;
+                addToHistory("Checkpoint 2 registrado");
+            }
+        }
+
+        // Aplicar penalización por salirse de la línea
+        function applyLinePenalty() {
+            if (!appState.running || appState.paused) return;
+            
+            appState.totalScore -= 5;
             domElements.totalScore.textContent = appState.totalScore;
+            
+            appState.penalties.push({
+                time: appState.elapsedTime,
+                type: "line",
+                section: appState.currentSection + 1,
+                points: 5
+            });
+            
+            addToHistory(`Penalización: Fuera de línea (-5) en Sección ${appState.currentSection + 1}`);
         }
 
-        // Agregar evento al historial
+        // Aplicar penalización por salirse del marco
+        function applyFramePenalty() {
+            if (!appState.running || appState.paused) return;
+            
+            appState.totalScore -= 20;
+            domElements.totalScore.textContent = appState.totalScore;
+            
+            appState.penalties.push({
+                time: appState.elapsedTime,
+                type: "frame",
+                section: appState.currentSection + 1,
+                points: 20
+            });
+            
+            addToHistory(`Penalización: Fuera del marco (-20) en Sección ${appState.currentSection + 1}`);
+        }
+
+        // Actualizar el cronómetro
+        function updateTimer() {
+    if (appState.running && !appState.paused) {
+        appState.elapsedTime = Date.now() - appState.startTime;
+        
+        // Actualizar el temporizador de la sección actual
+        for (let i = 0; i <= appState.currentSection; i++) {
+            if (i < appState.currentSection) {
+                // Para secciones completadas, mostrar el tiempo guardado
+                domElements.timers[i].textContent = formatTime(appState.sections[i].time);
+            } else {
+                // Para la sección actual, calcular el tiempo transcurrido desde el inicio de la sección
+                const sectionStartTime = i > 0 ? 
+                    appState.sections[i-1].time + (i > 1 ? appState.sections[i-2].time : 0) : 0;
+                const sectionTime = appState.elapsedTime - sectionStartTime;
+                domElements.timers[i].textContent = formatTime(sectionTime);
+                
+                // Guardar el tiempo actual en la sección (para cuando se complete)
+                appState.sections[i].time = sectionTime;
+            }
+        }
+    }
+}
+
+        // Añadir entrada al historial
         function addToHistory(message) {
             const historyItem = document.createElement('div');
             historyItem.className = 'history-item';
-            historyItem.textContent = message;
-            domElements.historyList.prepend(historyItem);
+            
+            const timeSpan = document.createElement('span');
+            timeSpan.className = 'section-time';
+            timeSpan.textContent = formatTime(appState.elapsedTime);
+            
+            historyItem.appendChild(timeSpan);
+            historyItem.appendChild(document.createTextNode(message));
+            
+            domElements.historyList.insertBefore(historyItem, domElements.historyList.firstChild);
         }
 
-        // Iniciar una sección
-        function startSection(sectionIndex) {
-            const section = appState.sections[sectionIndex];
+        // Guardar ID y emoticón del vehículo
+        function saveVehicleId() {
+            const newId = domElements.vehicleIdInput.value.trim();
             
-            if (!section.active && !section.completed) {
-                section.active = true;
-                appState.currentSection = sectionIndex + 1;
-                
-                const startTime = Date.now() - section.time;
-                section.timer = setInterval(() => {
-                    section.time = Date.now() - startTime;
-                    domElements.sections[sectionIndex].timer.textContent = formatTime(section.time);
-                }, 10);
-                
-                // Actualizar UI
-                domElements.sections[sectionIndex].start.disabled = true;
-                domElements.sections[sectionIndex].pause.disabled = false;
-                domElements.sections[sectionIndex].complete.disabled = false;
-                domElements.sections[sectionIndex].linePenalty.disabled = false;
-                domElements.sections[sectionIndex].framePenalty.disabled = false;
-                domElements.sections[sectionIndex].status.textContent = 'En progreso';
-                
-                updateSectionIndicators();
-                addToHistory(`Sección ${section.id} iniciada`);
-                updateVehiclePosition();
+            if (newId === "") {
+                showAlert("Por favor, ingrese un ID para el vehículo");
+                return;
             }
+            
+            appState.vehicleId = newId;
+            domElements.activeVehicleId.textContent = newId;
+            
+            addToHistory(`Vehículo identificado como: ${appState.vehicleId} ${appState.vehicleEmoji}`);
+            showAlert("ID de vehículo guardado");
         }
 
-        // Pausar una sección
-        function pauseSection(sectionIndex) {
-            const section = appState.sections[sectionIndex];
-            
-            if (section.active && section.timer) {
-                clearInterval(section.timer);
-                section.timer = null;
+        // Seleccionar emoticón para el vehículo
+        function selectEmoticon(event) {
+            if (event.target.classList.contains('emoticon-option')) {
+                const emoji = event.target.getAttribute('data-emoji');
                 
-                // Actualizar UI
-                domElements.sections[sectionIndex].start.disabled = false;
-                domElements.sections[sectionIndex].start.textContent = 'Continuar';
-                domElements.sections[sectionIndex].pause.disabled = true;
-                domElements.sections[sectionIndex].status.textContent = 'Pausado';
-                
-                addToHistory(`Sección ${section.id} pausada - Tiempo: ${formatTime(section.time)}`);
-            }
-        }
-
-        // Completar una sección
-        function completeSection(sectionIndex) {
-            const section = appState.sections[sectionIndex];
-            
-            if (section.active) {
-                if (section.timer) {
-                    clearInterval(section.timer);
-                    section.timer = null;
-                }
-                
-                section.active = false;
-                section.completed = true;
-                
-                // Actualizar UI
-                domElements.sections[sectionIndex].start.disabled = true;
-                domElements.sections[sectionIndex].pause.disabled = true;
-                domElements.sections[sectionIndex].complete.disabled = true;
-                domElements.sections[sectionIndex].linePenalty.disabled = true;
-                domElements.sections[sectionIndex].framePenalty.disabled = true;
-                domElements.sections[sectionIndex].status.textContent = 'Completado';
-                
-                // Habilitar la siguiente sección si existe
-                if (sectionIndex < 2) {
-                    domElements.sections[sectionIndex + 1].start.disabled = false;
-                } else {
-                    // Si es la última sección, mostrar mensaje de finalización
-                    showAlert('¡Recorrido completado! Puede guardar los resultados.');
-                    domElements.saveCurrentVehicle.disabled = false;
-                }
-                
-                updateSectionIndicators();
-                addToHistory(`Sección ${section.id} completada - Tiempo final: ${formatTime(section.time)}`);
-                
-                // Si completa la última sección, mover el vehículo a la meta
-                if (sectionIndex === 2) {
-                    domElements.trackVehicle.style.left = '95%';
-                    addToHistory(`¡${appState.vehicleEmoji} ${appState.vehicleId} ha completado el recorrido!`);
-                } else {
-                    updateVehiclePosition();
-                }
-            }
-        }
-
-        // Aplicar penalización
-        function applyPenalty(sectionIndex, type) {
-            const section = appState.sections[sectionIndex];
-            let penaltyPoints = 0;
-            let penaltyName = '';
-            
-            if (type === 'line') {
-                penaltyPoints = 5;
-                penaltyName = 'Fuera de Línea';
-            } else if (type === 'frame') {
-                penaltyPoints = 20;
-                penaltyName = 'Fuera del Marco';
-            }
-            
-            if (section.active) {
-                appState.totalScore -= penaltyPoints;
-                updateScore();
-                
-                section.penalties.push({
-                    type: penaltyName,
-                    points: penaltyPoints,
-                    time: section.time
+                // Actualizar selección visual
+                document.querySelectorAll('.emoticon-option').forEach(option => {
+                    option.classList.remove('emoticon-selected');
                 });
+                event.target.classList.add('emoticon-selected');
                 
-                addToHistory(`Penalización en Sección ${section.id}: ${penaltyName} (-${penaltyPoints} puntos) - Tiempo: ${formatTime(section.time)}`);
+                // Actualizar emoji seleccionado
+                appState.vehicleEmoji = emoji;
+                domElements.selectedEmoji.textContent = emoji;
+                domElements.trackVehicle.textContent = emoji;
             }
         }
 
         // Guardar resultados del vehículo actual
         function saveVehicleResults() {
-            // Verificar que todas las secciones están completadas
-            const allSectionsCompleted = appState.sections.every(section => section.completed);
-            
-            // Verificar que el vehículo tiene ID
             if (appState.vehicleId === "Sin identificar") {
-                showAlert('Por favor, identifique el vehículo antes de guardar resultados');
+                showAlert("Por favor, identifique el vehículo antes de guardar");
                 return;
             }
             
-            // Si no se han completado todas las secciones, confirmar con el usuario
-            if (!allSectionsCompleted) {
-                const confirm = window.confirm('No se han completado todas las secciones. ¿Desea guardar los resultados parciales?');
-                if (!confirm) return;
+            if (!appState.sections[2].completed) {
+                if (!confirm("El recorrido no está completo. ¿Desea guardar los resultados parciales?")) {
+                    return;
+                }
             }
             
             // Calcular tiempo total
-            const totalTime = appState.sections.reduce((sum, section) => sum + section.time, 0);
+            const totalTime = appState.sections[0].time + appState.sections[1].time + appState.sections[2].time;
             
             // Crear objeto de resultado
             const result = {
                 emoji: appState.vehicleEmoji,
                 id: appState.vehicleId,
                 score: appState.totalScore,
-                sectionTimes: appState.sections.map(section => section.time),
+                section1Time: appState.sections[0].time,
+                section2Time: appState.sections[1].time,
+                section3Time: appState.sections[2].time,
                 totalTime: totalTime,
-                penalties: appState.sections.flatMap(section => 
-                    section.penalties.map(penalty => ({
-                        section: section.id,
-                        ...penalty
-                    }))
-                ),
-                timestamp: new Date().toISOString()
+                penalties: [...appState.penalties]
             };
             
-            // Agregar a resultados
+            // Añadir a resultados
             appState.results.push(result);
             
             // Actualizar tabla de resultados
             updateResultsTable();
             
-            // Habilitar exportación si hay resultados
+            // Habilitar botón de exportar si hay resultados
             if (appState.results.length > 0) {
                 domElements.exportResults.disabled = false;
             }
             
-            // Guardar en localStorage
-            saveResultsToLocalStorage();
-            
-            // Mostrar mensaje de confirmación
-            showAlert('Resultados guardados correctamente');
-            
             // Reiniciar para nuevo vehículo
-            resetForNewVehicle();
+            resetCurrentVehicle();
+            showAlert("Resultados guardados correctamente");
         }
 
-        // Actualizar tabla de resultados
+        // Actualizar la tabla de resultados
         function updateResultsTable() {
             // Limpiar tabla
             domElements.resultsTableBody.innerHTML = '';
             
             if (appState.results.length === 0) {
                 const row = document.createElement('tr');
-                row.innerHTML = '<td colspan="7" class="empty-table-message">No hay resultados registrados</td>';
+                row.innerHTML = `<td colspan="7" class="empty-table-message">No hay resultados registrados</td>`;
                 domElements.resultsTableBody.appendChild(row);
                 return;
             }
             
-            // Ordenar resultados por puntuación (mayor a menor) y tiempo (menor a mayor)
+            // Ordenar resultados por puntuación (de mayor a menor)
             const sortedResults = [...appState.results].sort((a, b) => {
-                if (a.score !== b.score) {
-                    return b.score - a.score; // Mayor puntuación primero
+                // Primero por puntuación
+                if (b.score !== a.score) {
+                    return b.score - a.score;
                 }
-                return a.totalTime - b.totalTime; // Menor tiempo primero
+                // Si hay empate, por tiempo total
+                return a.totalTime - b.totalTime;
             });
             
-            // Agregar cada resultado a la tabla
-            sortedResults.forEach((result, index) => {
+            // Añadir filas
+            sortedResults.forEach(result => {
                 const row = document.createElement('tr');
                 
                 row.innerHTML = `
                     <td>${result.emoji}</td>
                     <td>${result.id}</td>
                     <td>${result.score}</td>
-                    <td>${formatTime(result.sectionTimes[0])}</td>
-                    <td>${formatTime(result.sectionTimes[1])}</td>
-                    <td>${formatTime(result.sectionTimes[2])}</td>
+                    <td>${formatTime(result.section1Time)}</td>
+                    <td>${formatTime(result.section2Time)}</td>
+                    <td>${formatTime(result.section3Time)}</td>
                     <td>${formatTime(result.totalTime)}</td>
                 `;
-                
-                // Destacar el primer lugar
-                if (index === 0) {
-                    row.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
-                    row.style.fontWeight = 'bold';
-                }
                 
                 domElements.resultsTableBody.appendChild(row);
             });
@@ -1229,233 +1400,158 @@
         // Exportar resultados a CSV
         function exportResultsToCSV() {
             if (appState.results.length === 0) {
-                showAlert('No hay resultados para exportar');
+                showAlert("No hay resultados para exportar");
                 return;
             }
             
-            // Crear cabecera del CSV
-            let csvContent = 'data:text/csv;charset=utf-8,';
-            csvContent += 'Vehículo,Identificador,Puntuación,Tiempo Sección 1,Tiempo Sección 2,Tiempo Sección 3,Tiempo Total,Fecha y Hora\n';
+            // Crear cabecera CSV
+            let csv = 'Vehículo,Identificador,Puntuación,Tiempo Sección 1,Tiempo Sección 2,Tiempo Sección 3,Tiempo Total\n';
             
-            // Agregar cada resultado
+            // Añadir filas
             appState.results.forEach(result => {
-                const row = [
-                    result.emoji,
-                    `"${result.id.replace(/"/g, '""')}"`,
-                    result.score,
-                    formatTime(result.sectionTimes[0]),
-                    formatTime(result.sectionTimes[1]),
-                    formatTime(result.sectionTimes[2]),
-                    formatTime(result.totalTime),
-                    new Date(result.timestamp).toLocaleString()
-                ].join(',');
-                
-                csvContent += row + '\n';
+                csv += `${result.emoji},${result.id},${result.score},${formatTime(result.section1Time)},${formatTime(result.section2Time)},${formatTime(result.section3Time)},${formatTime(result.totalTime)}\n`;
             });
             
-            // Crear enlace de descarga
-            const encodedUri = encodeURI(csvContent);
+            // Crear blob y descargar
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.setAttribute('href', encodedUri);
-            link.setAttribute('download', `resultados_seguidores_linea_${new Date().toISOString().slice(0, 10)}.csv`);
+            
+            // Nombre del archivo con fecha y hora
+            const now = new Date();
+            const fileName = `resultados_seguidores_linea_${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}_${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}.csv`;
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', fileName);
+            link.style.visibility = 'hidden';
+            
             document.body.appendChild(link);
-            
-            // Descargar
             link.click();
-            
-            // Limpiar
             document.body.removeChild(link);
+            
+            showAlert("Resultados exportados correctamente");
         }
 
-        // Guardar resultados en localStorage
-        function saveResultsToLocalStorage() {
-            try {
-                localStorage.setItem('lineFollowerResults', JSON.stringify(appState.results));
-            } catch (e) {
-                console.error('Error al guardar en localStorage:', e);
+        // Reiniciar para un nuevo vehículo (mantiene los resultados guardados)
+        function resetCurrentVehicle() {
+            // Detener cualquier timer activo
+            if (appState.timer) {
+                clearInterval(appState.timer);
             }
-        }
-
-        // Cargar resultados desde localStorage
-        function loadResultsFromLocalStorage() {
-            try {
-                const savedResults = localStorage.getItem('lineFollowerResults');
-                if (savedResults) {
-                    appState.results = JSON.parse(savedResults);
-                    updateResultsTable();
-                    
-                    // Habilitar exportación si hay resultados
-                    if (appState.results.length > 0) {
-                        domElements.exportResults.disabled = false;
-                    }
-                }
-            } catch (e) {
-                console.error('Error al cargar desde localStorage:', e);
-            }
-        }
-
-        // Reiniciar para nuevo vehículo
-        function resetForNewVehicle() {
-            // Detener todos los timers
-            appState.sections.forEach(section => {
-                if (section.timer) {
-                    clearInterval(section.timer);
-                    section.timer = null;
-                }
-            });
             
             // Reiniciar estado
             appState.currentSection = 0;
             appState.totalScore = 100;
-            appState.sections.forEach(section => {
-                section.active = false;
-                section.completed = false;
-                section.time = 0;
-                section.penalties = [];
+            appState.running = false;
+            appState.paused = false;
+            appState.elapsedTime = 0;
+            appState.sections = [
+                { completed: false, time: 0, checkpoint: 0 },
+                { completed: false, time: 0, checkpoint: 0 },
+                { completed: false, time: 0, checkpoint: 0 }
+            ];
+            appState.penalties = [];
+            
+            // Reiniciar visualización
+            domElements.totalScore.textContent = appState.totalScore;
+            domElements.timers.forEach(timer => {
+                timer.textContent = "00:00";
             });
             
-            // Reiniciar ID del vehículo y emoji
-            appState.vehicleId = "Sin identificar";
-            domElements.activeVehicleId.textContent = "Sin identificar";
-            domElements.vehicleIdInput.value = "";
+            // Reiniciar botones
+            domElements.startRun.disabled = false;
+            domElements.pauseRun.disabled = true;
+            domElements.completeRun.disabled = true;
+            domElements.checkpoint1.disabled = true;
+            domElements.checkpoint2.disabled = true;
+            domElements.linePenalty.disabled = true;
+            domElements.framePenalty.disabled = true;
+            domElements.pauseRun.textContent = "Pausar";
+            domElements.saveVehicleId.disabled = false;
+            domElements.vehicleIdInput.disabled = false;
             
-            // Actualizar UI
-            updateScore();
-            updateSectionIndicators();
-            
-            domElements.sections.forEach((sectionElements, index) => {
-                sectionElements.timer.textContent = '00:00.00';
-                sectionElements.start.disabled = index === 0 ? false : true;
-                sectionElements.start.textContent = 'Iniciar';
-                sectionElements.pause.disabled = true;
-                sectionElements.complete.disabled = true;
-                sectionElements.linePenalty.disabled = true;
-                sectionElements.framePenalty.disabled = true;
-                sectionElements.status.textContent = 'En espera';
-            });
-            
-            // Reiniciar posición del vehículo
-            domElements.trackVehicle.style.left = '5%';
-            
-            // Deshabilitar botón de guardar
-            domElements.saveCurrentVehicle.disabled = true;
-            
-            addToHistory('Preparado para nuevo vehículo');
-        }
-
-        // Reiniciar todo
-        function resetAll() {
-            // Confirmar antes de borrar todo
-            const confirm = window.confirm('¿Está seguro que desea reiniciar todo el sistema? Se perderán todos los resultados guardados.');
-            if (!confirm) return;
-            
-            // Reiniciar para nuevo vehículo
-            resetForNewVehicle();
-            
-            // Borrar resultados
-            appState.results = [];
-            updateResultsTable();
-            
-            // Borrar localStorage
-            localStorage.removeItem('lineFollowerResults');
-            
-            // Deshabilitar exportación
-            domElements.exportResults.disabled = true;
-            
-            // Borrar historial
+            // Limpiar historial
             domElements.historyList.innerHTML = '';
             
-            addToHistory('Sistema completamente reiniciado');
+            // Reiniciar visualización de la pista
+            updateTrackVisualization();
+            updateSectionStatus();
+            
+            addToHistory("Sistema reiniciado para nuevo vehículo");
         }
 
-        // Actualizar la posición del vehículo en la pista
-        function updateVehiclePosition() {
-            const section = appState.currentSection;
-            let position;
-            
-            switch(section) {
-                case 0:
-                    position = 5; // Inicio
-                    break;
-                case 1:
-                    position = 16; // Sección 1
-                    break;
-                case 2:
-                    position = 50; // Sección 2
-                    break;
-                case 3:
-                    position = 83; // Sección 3
-                    break;
+        // Reiniciar completamente la aplicación
+        function resetAll() {
+            if (appState.results.length > 0) {
+                if (!confirm("¿Está seguro de que desea reiniciar todo? Se perderán todos los resultados guardados.")) {
+                    return;
+                }
             }
             
-            domElements.trackVehicle.style.left = `${position}%`;
-        }
-
-        // Funciones para el ID y emoticón del vehículo
-        function initEmoticonSelector() {
-            const options = domElements.emoticonSelector.querySelectorAll('.emoticon-option');
+            // Reiniciar vehículo actual
+            resetCurrentVehicle();
             
-            options.forEach(option => {
-                option.addEventListener('click', function() {
-                    // Eliminar selección anterior
-                    options.forEach(opt => opt.classList.remove('emoticon-selected'));
-                    
-                    // Seleccionar el actual
-                    this.classList.add('emoticon-selected');
-                    
-                    // Actualizar el emoji seleccionado
-                    const emoji = this.getAttribute('data-emoji');
-                    domElements.selectedEmoji.textContent = emoji;
-                });
+            // Además, reiniciar ID y emoticón
+            appState.vehicleId = "Sin identificar";
+            appState.vehicleEmoji = "🚗";
+            domElements.activeVehicleId.textContent = "Sin identificar";
+            domElements.selectedEmoji.textContent = "🚗";
+            domElements.vehicleIdInput.value = "";
+            
+            // Limpiar selección de emoticón
+            document.querySelectorAll('.emoticon-option').forEach(option => {
+                option.classList.remove('emoticon-selected');
             });
+            document.querySelector('[data-emoji="🚗"]').classList.add('emoticon-selected');
             
-            // Seleccionar el primer emoticón por defecto
-            options[0].classList.add('emoticon-selected');
-        }
-
-        function saveVehicleId() {
-            const id = domElements.vehicleIdInput.value.trim();
-            const emoji = domElements.selectedEmoji.textContent;
+            // Limpiar resultados
+            appState.results = [];
+            updateResultsTable();
+            domElements.exportResults.disabled = true;
             
-            if (id) {
-                appState.vehicleId = id;
-                appState.vehicleEmoji = emoji;
-                
-                domElements.activeVehicleId.textContent = id;
-                domElements.trackVehicle.textContent = emoji;
-                
-                addToHistory(`Vehículo identificado: ${emoji} ${id}`);
-            } else {
-                showAlert('Por favor, ingrese un ID para el vehículo');
-            }
+            showAlert("Sistema reiniciado completamente");
         }
 
-        // Event Listeners
-        domElements.sections.forEach((sectionElements, index) => {
-            sectionElements.start.addEventListener('click', () => startSection(index));
-            sectionElements.pause.addEventListener('click', () => pauseSection(index));
-            sectionElements.complete.addEventListener('click', () => completeSection(index));
-            sectionElements.linePenalty.addEventListener('click', () => applyPenalty(index, 'line'));
-            sectionElements.framePenalty.addEventListener('click', () => applyPenalty(index, 'frame'));
-        });
-
-        domElements.resetAll.addEventListener('click', resetAll);
-        domElements.saveVehicleId.addEventListener('click', saveVehicleId);
-        domElements.saveCurrentVehicle.addEventListener('click', saveVehicleResults);
-        domElements.exportResults.addEventListener('click', exportResultsToCSV);
-
-        // Inicializar
-        function initialize() {
-            initEmoticonSelector();
-            updateSectionIndicators();
-            createStars(); // Inicializar el fondo estrellado
-            loadResultsFromLocalStorage();
-            domElements.saveCurrentVehicle.disabled = true;
-            addToHistory('Sistema inicializado');
+        // Inicializar eventos
+        function initEvents() {
+            // Eventos de los botones principales
+            domElements.startRun.addEventListener('click', startRun);
+            domElements.pauseRun.addEventListener('click', pauseRun);
+            domElements.completeRun.addEventListener('click', completeRun);
+            domElements.resetAll.addEventListener('click', resetAll);
+            
+            // Eventos para penalizaciones
+            domElements.linePenalty.addEventListener('click', applyLinePenalty);
+            domElements.framePenalty.addEventListener('click', applyFramePenalty);
+            
+            // Eventos para checkpoints
+            domElements.checkpoint1.addEventListener('click', () => registerCheckpoint(1));
+            domElements.checkpoint2.addEventListener('click', () => registerCheckpoint(2));
+            
+            // Eventos para ID y emoticón
+            domElements.saveVehicleId.addEventListener('click', saveVehicleId);
+            domElements.emoticonSelector.addEventListener('click', selectEmoticon);
+            
+            // Evento para guardar vehículo
+            domElements.saveCurrentVehicle.addEventListener('click', saveVehicleResults);
+            
+            // Evento para exportar resultados
+            domElements.exportResults.addEventListener('click', exportResultsToCSV);
+            
+            // Inicializar estado del emoticón por defecto
+            document.querySelector('[data-emoji="🚗"]').classList.add('emoticon-selected');
         }
 
-        // Llamar a la función de inicialización
-        initialize();
+        // Inicializar la aplicación
+        function initApp() {
+            createStars();
+            initEvents();
+            updateTrackVisualization();
+            updateSectionStatus();
+        }
+
+        // Iniciar la aplicación cuando se carga la página
+        window.addEventListener('load', initApp);
     </script>
 </body>
 </html>
